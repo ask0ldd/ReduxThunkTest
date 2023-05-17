@@ -9,7 +9,7 @@ const initialState = {
 async function getAccounts()
 {
     try{
-        const response = await fetch('../assets/accounts.json')
+        const response = await fetch('/accounts.json')
         if(response.ok){
             const accountDatas = await response.json()
             return accountDatas
@@ -43,7 +43,5 @@ export const apiSlice = createSlice({
           })
       },
 })
-
-//export const {getSt} = apiSlice.actions
 
 export default apiSlice.reducer
