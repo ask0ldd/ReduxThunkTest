@@ -5,7 +5,7 @@ import { setAccountsStatements } from './redux/apiSlice'
 
 function App() {
 
-  store.dispatch(setAccountsStatements()).unwrap().then(res => console.log(res))
+  store.dispatch(setAccountsStatements())
 
   return (
     <>

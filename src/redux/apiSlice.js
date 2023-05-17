@@ -4,6 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 const initialState = {
     statements: [],
     loading: 'idle',
+    error: false
 }
 
 async function getAccounts()
@@ -28,18 +29,17 @@ export const apiSlice = createSlice({
     name : 'api',
     initialState,
     reducers: {
-        // getSt : (state) => state,
     },
     extraReducers: (builder) => {
         builder
           .addCase(setAccountsStatements.pending, (state) => {
-            return {...state, loading : 'pending'}
+            return {...state, loading : 'pending', error: false}
           })
           .addCase(setAccountsStatements.fulfilled, (state, action) => {
             return {...state, loading : 'idle', statements : action.payload}
           })
           .addCase(setAccountsStatements.rejected, (state) => {
-            return {...state, loading : 'idle'}
+            return {...state, loading : 'idle', error: true}
           })
       },
 })
